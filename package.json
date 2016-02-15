@@ -15,12 +15,19 @@
   "license": "BSD-2-Clause",
   "main": "./lib/index.js",
   "bin": { "commonmark": "./bin/commonmark" },
-  "scripts": { "test": "node ./test/test.js" },
+  "scripts": {
+    "build": "rm -rf build/ && babel lib/ --out-dir build/ --ignore __tests__,__mocks__",
+    "test": "node ./test/test.js"
+  },
   "dependencies": {
+    "babel-runtime": "5.8.25",
     "entities": "~ 1.1.1",
     "mdurl": "~ 1.0.1",
     "string.prototype.repeat": "^0.2.0",
     "minimist": "~ 1.2.0"
+  },
+  "devDependencies": {
+    "babel": "5.6.23"
   },
   "directories": {
       "lib": "./lib"

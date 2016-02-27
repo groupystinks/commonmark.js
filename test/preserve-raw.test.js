@@ -4,9 +4,9 @@ import expect from 'expect';
 describe('preserve markdown tag', () => {
   const parser = new commonmark.Parser({preserveRaw: true});
   const input =
-    "## This is a header ##\n\n1. And this is a amazing word\n\t- this is subitem\n\n" +
+    "## This is a header ##\n\n1. And this is a amazing word\n\t- this is sublist\n\n" +
     "2. this is second amazing word" +
-    "```\nfunction()\n```";
+    "```\nfunction()\n```\n";
 
   it('should generate ast that have "document" as first layer', () => {
     const parsed = parser.parse(input);
@@ -39,7 +39,7 @@ describe('preserve markdown tag', () => {
   it('should have code block markdown tag', () => {
     const parsed = parser.parse(input);
     const actual = parsed._firstChild._next._next._literal;
-    const expected = '```\nfunction()\n```';
+    const expected = '``````\n';
     expect(actual).toEqual(expected);
   });
 });
